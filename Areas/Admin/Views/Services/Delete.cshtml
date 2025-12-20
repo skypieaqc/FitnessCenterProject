@@ -1,0 +1,37 @@
+﻿@model FitnessCenterProject.Models.Service
+
+@{
+    ViewData["Title"] = "Hizmet Sil";
+}
+
+<div class="card shadow-sm col-md-6 mx-auto border-danger">
+    <div class="card-header bg-danger text-white">
+        <h4 class="mb-0">Silme Onayı</h4>
+    </div>
+    <div class="card-body">
+        <p class="lead text-center">Bu hizmeti silmek istediğinize emin misiniz?</p>
+        <p class="text-muted text-center small">Dikkat: Bu hizmeti silerseniz, geçmiş randevu kayıtlarında görünmeyebilir.</p>
+
+        <dl class="row mt-4">
+            <dt class="col-sm-4">Hizmet Adı:</dt>
+            <dd class="col-sm-8">@Model.Name</dd>
+
+            <dt class="col-sm-4">Açıklama:</dt>
+            <dd class="col-sm-8">@Model.Description</dd>
+
+            <dt class="col-sm-4">Süre:</dt>
+            <dd class="col-sm-8">@Model.DurationMinutes dk</dd>
+
+            <dt class="col-sm-4">Ücret:</dt>
+            <dd class="col-sm-8">@Model.Price.ToString("C2")</dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <div class="d-grid gap-2 mt-3">
+                <button type="submit" class="btn btn-danger">Evet, Hizmeti Sil</button>
+                <a asp-action="Index" class="btn btn-secondary">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>

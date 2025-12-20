@@ -1,0 +1,43 @@
+﻿@model FitnessCenterProject.Models.Appointment
+
+@{
+    ViewData["Title"] = "Randevu Al";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Randevu Oluştur: @ViewBag.ServiceName</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <input type="hidden" asp-for="ServiceId" value="@ViewBag.ServiceId" />
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Eğitmen Seçiniz</label>
+                            <select asp-for="TrainerId" class="form-select" asp-items="ViewBag.TrainerId">
+                                <option value="">-- Uygun Eğitmenler --</option>
+                            </select>
+                            <span asp-validation-for="TrainerId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="AppointmentDate" class="form-label fw-bold">Tarih ve Saat</label>
+                            <input asp-for="AppointmentDate" class="form-control" type="datetime-local"
+                                   min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+                            <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">Randevuyu Onayla</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

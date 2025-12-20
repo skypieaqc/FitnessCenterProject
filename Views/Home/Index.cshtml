@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FitnessCenterProject.Models.Service>
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">Sağlıklı Yaşama Adım Atın</h1>
+    <p class="lead text-muted">Uzman eğitmenlerimizle hedeflerinize ulaşın.</p>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4 class="my-1">@item.Name</h4>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h2 class="card-title pricing-card-title text-center text-primary">
+                        @item.Price.ToString("C0") <small class="text-muted fw-light">/ Seans</small>
+                    </h2>
+                    <ul class="list-unstyled mt-3 mb-4 text-center">
+                        <li><i class="bi bi-clock"></i> Süre: @item.DurationMinutes Dakika</li>
+                        <li class="mt-2 text-muted">@item.Description</li>
+                    </ul>
+                    <div class="mt-auto">
+                        <a asp-controller="Appointments" asp-action="Create" asp-route-serviceId="@item.Id"
+                           class="w-100 btn btn-lg btn-outline-primary">
+                            Randevu Al
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

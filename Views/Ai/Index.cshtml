@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "AI Destekli Planlayıcı";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-gradient bg-primary text-white text-center py-4">
+                <h3 class="mb-0"><i class="bi bi-robot"></i> AI Antrenör</h3>
+                <p class="mb-0 small opacity-75">Sizin için en uygun planı yapay zeka hesaplasın.</p>
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="GeneratePlan" method="post">
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Boyunuz (cm)</label>
+                            <input type="number" name="height" class="form-control" placeholder="175" required min="100" max="250">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Kilonuz (kg)</label>
+                            <input type="number" name="weight" class="form-control" placeholder="70" required min="30" max="200">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Cinsiyet</label>
+                        <select name="gender" class="form-select">
+                            <option value="male">Erkek</option>
+                            <option value="female">Kadın</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Temel Hedefiniz</label>
+                        <div class="d-flex gap-2">
+                            <input type="radio" class="btn-check" name="goal" id="g1" value="muscle" checked>
+                            <label class="btn btn-outline-primary flex-fill" for="g1">Kas Yapmak</label>
+
+                            <input type="radio" class="btn-check" name="goal" id="g2" value="weightloss">
+                            <label class="btn btn-outline-danger flex-fill" for="g2">Kilo Vermek</label>
+
+                            <input type="radio" class="btn-check" name="goal" id="g3" value="fitness">
+                            <label class="btn btn-outline-success flex-fill" for="g3">Form Korumak</label>
+                        </div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-magic"></i> Planımı Oluştur
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

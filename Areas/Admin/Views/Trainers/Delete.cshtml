@@ -1,0 +1,42 @@
+﻿@model FitnessCenterProject.Models.Trainer
+
+@{
+    ViewData["Title"] = "Antrenör Sil";
+}
+
+<div class="card shadow-sm col-md-6 mx-auto border-danger">
+    <div class="card-header bg-danger text-white">
+        <h4 class="mb-0">Silme Onayı</h4>
+    </div>
+    <div class="card-body">
+        <p class="lead">Bu antrenörü silmek istediğinize emin misiniz?</p>
+
+        <dl class="row">
+            <dt class="col-sm-4">Ad Soyad:</dt>
+            <dd class="col-sm-8">@Model.FullName</dd>
+
+            <dt class="col-sm-4">Uzmanlık:</dt>
+            <dd class="col-sm-8">@Model.Specialty</dd>
+
+            <dt class="col-sm-4">Hizmet:</dt>
+            <dd class="col-sm-8">
+                @if (Model.Service != null)
+                {
+                    @Model.Service.Name
+                }
+                else
+                {
+                    <span class="text-muted">Hizmet bulunamadı</span>
+                }
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-danger">Evet, Sil</button>
+                <a asp-action="Index" class="btn btn-secondary">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>
